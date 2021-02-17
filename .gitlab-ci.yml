@@ -9,7 +9,6 @@ variables:
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
-  - echo $GRADLE_USER_HOME
 
 build:
   stage: build
@@ -22,7 +21,7 @@ build:
 
 test:
   stage: test
-  script: ./gradlew check
+  script: ./gradlew --build-cache check
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
