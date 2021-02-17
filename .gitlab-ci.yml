@@ -9,7 +9,7 @@ variables:
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
-  - echo "GRADLE_USER_HOME=$GRADLE_USER_HOME"
+  - echo $GRADLE_USER_HOME
 
 build:
   stage: build
