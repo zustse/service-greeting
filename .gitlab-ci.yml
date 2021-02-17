@@ -37,8 +37,8 @@ publish:
   stage: publish
   script:
     - ./gradlew --build-cache assemble
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file build/distributions/greeting.zip "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/greeting/1.0-SNAPSHOT/greeting.zip"'
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file build/distributions/greeting.tar "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/greeting/1.0-SNAPSHOT/greeting.tar"'
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file build/distributions/greeting.zip "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/greeting/1.0.0+$CI_COMMIT_SHORT_SHA/greeting.zip"'
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file build/distributions/greeting.tar "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/greeting/1.0+$CI_COMMIT_SHORT_SHA/greeting.tar"'
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
