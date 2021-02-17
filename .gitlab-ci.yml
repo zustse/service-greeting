@@ -12,7 +12,7 @@ before_script:
 
 build:
   stage: build
-  script: ./gradlew --build-cache assemble
+  script: ./gradlew --build-cache classes
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
@@ -22,6 +22,18 @@ build:
 test:
   stage: test
   script: ./gradlew --build-cache check
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - .gradle
+
+publish:
+  stage: publish
+  script:
+    - script: ./gradlew --build-cache assemble
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file build/distributions/greeting.zip "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/greeting/1.0-SNAPSHOT/greeting.zip"'
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file build/distributions/greeting.tar "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/greeting/1.0-SNAPSHOT/greeting.tar"'
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
