@@ -1,3 +1,2 @@
 # Greeting App
-A simple Hello World application
-
+A simple Hello World application.
