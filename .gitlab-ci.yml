@@ -3,7 +3,7 @@ image: openjdk:15
 stages:
   - build
   - test
-  - check
+  - scan
   - publish
 
 # Disable the Gradle daemon for Continuous Integration servers as correctness
@@ -60,7 +60,7 @@ publish:
       - .gradle
   
 sonarcloud-check:
-  stage: check
+  stage: scan
   script: ./gradlew sonarqube
   cache:
     key: "$CI_COMMIT_REF_NAME"
