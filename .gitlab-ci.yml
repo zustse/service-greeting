@@ -19,6 +19,9 @@ before_script:
 
 build:
   stage: build
+  only:
+    - merge_requests
+    - master
   script: ./gradlew classes
   cache:
     key: "$CI_COMMIT_REF_NAME"
@@ -28,6 +31,9 @@ build:
 
 test:
   stage: test
+  only:
+    - merge_requests
+    - master
   script: ./gradlew check
   cache:
     key: "$CI_COMMIT_REF_NAME"
@@ -40,6 +46,8 @@ test:
 
 publish:
   stage: publish
+  only:
+    - master
   script:
     - ./gradlew assemble
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file build/distributions/greeting.zip "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/greeting/1.0.0/greeting.zip"'
@@ -52,8 +60,12 @@ publish:
   
 sonarcloud-check:
   stage: test
+  only:
+    - merge_requests
+    - master
   script: ./gradlew sonarqube
   cache:
     key: "$CI_COMMIT_REF_NAME"
     paths:
       - .sonar/cache
+  

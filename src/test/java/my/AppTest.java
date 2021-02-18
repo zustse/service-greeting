@@ -13,6 +13,11 @@ class AppTest {
     }
 
     @Test
+    void succeed2() {
+
+    }
+
+    @Test
     @Disabled
     void error() {
         throw new RuntimeException();
