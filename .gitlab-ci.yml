@@ -47,8 +47,7 @@ test:
 publish:
   stage: publish
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-      when: never
+    - if: '$CI_COMMIT_BRANCH == "master"'
   script:
     - ./gradlew assemble
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file build/distributions/greeting.zip "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/greeting/1.0.0/greeting.zip"'
