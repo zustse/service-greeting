@@ -3,6 +3,7 @@ image: openjdk:15
 stages:
   - build
   - test
+  - scan
   - publish
 
 # Disable the Gradle daemon for Continuous Integration servers as correctness
@@ -17,12 +18,14 @@ variables:
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
 
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "master"'
+
 build:
   stage: build
-  only:
-    - merge_requests
-    - master
-  script: ./gradlew classes
+  script: ./gradlew assemble
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
@@ -31,9 +34,6 @@ build:
 
 test:
   stage: test
-  only:
-    - merge_requests
-    - master
   script: ./gradlew check
   cache:
     key: "$CI_COMMIT_REF_NAME"
@@ -46,8 +46,9 @@ test:
 
 publish:
   stage: publish
-  only:
-    - master
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
   script:
     - ./gradlew assemble
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file build/distributions/greeting.zip "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/greeting/1.0.0/greeting.zip"'
@@ -59,10 +60,7 @@ publish:
       - .gradle
   
 sonarcloud-check:
-  stage: test
-  only:
-    - merge_requests
-    - master
+  stage: scan
   script: ./gradlew sonarqube
   cache:
     key: "$CI_COMMIT_REF_NAME"
