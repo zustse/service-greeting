@@ -52,8 +52,12 @@ publish:
   
 sonarcloud-check:
   stage: test
+  only:
+    - merge_requests
+    - master
   script: ./gradlew sonarqube
   cache:
     key: "$CI_COMMIT_REF_NAME"
     paths:
       - .sonar/cache
+  
