@@ -1,6 +1,7 @@
 plugins {
     java
     application
+    id("org.sonarqube") version "3.1.1"
 }
 
 repositories {
@@ -16,6 +17,13 @@ dependencies {
 
 application {
     mainClass.set("my.App")
+}
+
+sonarqube {
+    properties {
+        property("sonar.projectKey", "stse_greeting")
+        property("sonar.organization", "stse-1")
+    }
 }
 
 tasks {
