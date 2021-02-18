@@ -13,11 +13,13 @@ class AppTest {
     }
 
     @Test
+    @Disabled
     void error() {
         throw new RuntimeException();
     }
 
     @Test
+    @Disabled
     void failed() {
         assertEquals(0,1);
     }

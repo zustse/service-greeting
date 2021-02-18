@@ -11,6 +11,8 @@ stages:
 # isolated from any previous builds.
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.caching=true"
+  SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+  GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
@@ -29,7 +31,6 @@ test:
   script: ./gradlew check
   cache:
     key: "$CI_COMMIT_REF_NAME"
-    policy: pull
     paths:
       - .gradle
   artifacts:
@@ -48,3 +49,11 @@ publish:
     policy: pull
     paths:
       - .gradle
+  
+sonarcloud-check:
+  stage: test
+  script: ./gradlew sonarqube
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    paths:
+      - .sonar/cache
