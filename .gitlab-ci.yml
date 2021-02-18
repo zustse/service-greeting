@@ -32,6 +32,10 @@ test:
     policy: pull
     paths:
       - .gradle
+  artifacts:
+    when: always
+    reports:
+      junit: build/test-results/test/**/TEST-*.xml
 
 publish:
   stage: publish
