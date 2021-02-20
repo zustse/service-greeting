@@ -70,7 +70,7 @@ qodana:
   stage: scan
   image: 
     name: jetbrains/qodana
-    entrypoint: []
+    entrypoint: [""]
   script:
     - /opt/idea/bin/entrypoint --help
   artifacts:
