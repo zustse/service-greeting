@@ -68,12 +68,12 @@ sonarcloud-check:
 
 qodana:
   stage: scan
-  image: 
-    name: jetbrains/qodana
-    entrypoint: [""]
+  image: docker:stable
+  services:
+    - docker:stable-dind
   script:
-    - /opt/idea/bin/entrypoint --project-dir=$CI_PROJECT_DIR --results-dir=$CI_PROJECT_DIR/qodana --save-report --report-dir=$CI_PROJECT_DIR/qodana/report
+    - docker run --rm -it -v $CI_PROJECT_DIR/:/data/project/ -v $CI_PROJECT_DIR/build/qodana/:/data/results/ jetbrains/qodana
   artifacts:
     paths:
-      - qodana
+      - $CI_PROJECT_DIR/build/qodana/
   
