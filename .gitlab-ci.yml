@@ -72,7 +72,7 @@ qodana:
   services:
     - docker:stable-dind
   script:
-    - docker run --rm -it -v $CI_PROJECT_DIR/:/data/project/ -v $CI_PROJECT_DIR/build/qodana/:/data/results/ jetbrains/qodana
+    - docker run --rm -v $CI_PROJECT_DIR/:/data/project/ -v $CI_PROJECT_DIR/build/qodana/:/data/results/ jetbrains/qodana
   artifacts:
     paths:
       - $CI_PROJECT_DIR/build/qodana/
