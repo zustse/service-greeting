@@ -71,7 +71,8 @@ qodana:
   image: 
     name: jetbrains/qodana
     entrypoint: [/opt/idea/bin/entrypoint,--help]
-  script: []
+  script:
+    - echo Hello
   artifacts:
     paths:
       - qodana
