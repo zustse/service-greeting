@@ -70,9 +70,8 @@ qodana:
   stage: scan
   image: 
     name: jetbrains/qodana
-    entrypoint: [sh, -c]
+    entrypoint: [/bin/bash]
   script:
-    - bash
     - /opt/idea/bin/entrypoint --results-dir=$CI_PROJECT_DIR/qodana --save-report --report-dir=$CI_PROJECT_DIR/qodana/report
   artifacts:
     paths:
