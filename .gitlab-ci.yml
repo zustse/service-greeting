@@ -8,8 +8,12 @@ stages:
 
 include:
   - template: Dependency-Scanning.gitlab-ci.yml
+  - template: Security/License-Scanning.gitlab-ci.yml
 
 dependency_scanning:
+  stage: scan
+
+license_scanning:
   stage: scan
 
 # Disable the Gradle daemon for Continuous Integration servers as correctness
