@@ -69,3 +69,6 @@ sonarcloud-check:
     paths:
       - .sonar/cache
 
+gemnasium-dependency_scanning:
+  stage: scan
+
