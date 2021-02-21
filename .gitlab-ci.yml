@@ -1,13 +1,16 @@
 image: openjdk:15
 
-include:
-  - template: Dependency-Scanning.gitlab-ci.yml
-  
 stages:
   - build
   - test
   - scan
   - publish
+
+include:
+  - template: Dependency-Scanning.gitlab-ci.yml
+
+gemnasium-dependency_scanning:
+  stage: scan
 
 # Disable the Gradle daemon for Continuous Integration servers as correctness
 # is usually a priority over speed in CI environments. Using a fresh
@@ -68,7 +71,3 @@ sonarcloud-check:
     key: "$CI_COMMIT_REF_NAME"
     paths:
       - .sonar/cache
-
-gemnasium-dependency_scanning:
-  stage: scan
-
