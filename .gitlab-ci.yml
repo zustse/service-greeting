@@ -66,4 +66,7 @@ sonarqube:
     paths:
       - .sonar/cache
   artifacts:
-    paths: [build/sonar/gl-code-quality-report.json]
+    reports:
+      codequality: build/sonar/gl-code-quality-report.json
+    expire_in: 1 week
+
