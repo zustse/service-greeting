@@ -10,8 +10,10 @@ repositories {
 }
 
 dependencies {
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:2.4.3"))
     testImplementation(platform("org.junit:junit-bom:5.7.1"))
 
+    implementation("org.springframework.boot", "spring-boot-starter")
     testImplementation("org.junit.jupiter", "junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter", "junit-jupiter-engine")
 }
