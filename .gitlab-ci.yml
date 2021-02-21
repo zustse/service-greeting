@@ -60,7 +60,7 @@ publish:
   
 sonarqube:
   stage: scan
-  script: ./gradlew sonarqube
+  script: ./gradlew -i sonarqube
   cache:
     key: "$CI_COMMIT_REF_NAME"
     paths:
