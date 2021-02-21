@@ -65,3 +65,5 @@ sonarqube:
     key: "$CI_COMMIT_REF_NAME"
     paths:
       - .sonar/cache
+  artifacts:
+    paths: [build/sonar/gl-code-quality-report.json]
