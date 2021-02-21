@@ -2,6 +2,7 @@ plugins {
     java
     application
     id("org.sonarqube") version "3.1.1"
+    id("com.github.hierynomus.license") version "0.15.0"
 }
 
 repositories {
