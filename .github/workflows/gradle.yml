@@ -31,5 +31,11 @@ jobs:
       uses: JetBrains/qodana-action@v1.0-eap
       with:
         project-dir: /
+        results-dir: qodana/results
+        report-dir: qodana/report
+        
+        
+        
+        
 
 
