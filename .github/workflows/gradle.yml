@@ -23,7 +23,9 @@ jobs:
       run: ./gradlew build
       
   check:
+    needs: build
     runs-on: ubuntu-latest
+    
     steps:
     - name: Qodana - Code Inspection
       uses: JetBrains/qodana-action@v1.0-eap
