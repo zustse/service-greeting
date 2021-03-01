@@ -28,7 +28,7 @@ jobs:
     
     steps:
     - name: Qodana - Code Inspection
-      uses: JetBrains/qodana-action
+      uses: JetBrains/qodana-action@latest
       with:
         project-dir: /
 
