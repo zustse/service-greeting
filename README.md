@@ -1,2 +1,2 @@
-# Greeting App
-A simple Hello World application.
+# Greeting Service
+A simple Hello World service.
