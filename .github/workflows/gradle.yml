@@ -28,10 +28,8 @@ jobs:
     
     steps:
     - name: Qodana - Code Inspection
-      uses: JetBrains/qodana-action@v1.0-eap
+      uses: JetBrains/qodana-action
       with:
-        project-dir: '/'
-        results-dir: '/qodana/results'
-        report-dir: '/qodana/report'
+        project-dir: /
 
 
