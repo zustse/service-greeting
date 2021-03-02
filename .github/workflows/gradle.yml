@@ -27,6 +27,7 @@ jobs:
 
     runs-on: ubuntu-latest
     container: openjdk:15.0
+    needs: build
     
     steps:
     - uses: actions/checkout@v2
