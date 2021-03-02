@@ -26,12 +26,9 @@ For more information, please refer to <https://unlicense.org>
 */
 package my;
 
-import java.util.Optional;
-
 
 public class App {
     public static void main(String... args) {
         System.out.println("Hello World");
-        Optional<String> text = null;
     }
 }
