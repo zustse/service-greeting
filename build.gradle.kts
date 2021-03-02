@@ -33,11 +33,13 @@ application {
 }
 
 sonarqube {
-    properties {
-        property("sonar.projectKey", "stse_greeting")
-        property("sonar.organization", "stse-1")
-    }
+  properties {
+    property("sonar.projectKey", "stse_service-greeting")
+    property("sonar.organization", "zustse")
+    property("sonar.host.url", "https://sonarcloud.io")
+  }
 }
+
 
 tasks {
     test {
