@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     container: openjdk:15.0
     
     steps:
@@ -25,17 +25,11 @@ jobs:
       
   check:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     container: openjdk:15.0
     needs: build
     
     steps:
-    - name: Download git
-      uses: actions/github-script@v3
-      with:
-        script: |
-          apt-get update
-          apt-get install git -y
     - name: Checkout
       uses: actions/checkout@v2
       with:
