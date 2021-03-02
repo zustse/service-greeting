@@ -1,2 +1,2 @@
 # Greeting Service
-A Hello World service.
+A simple Hello World service.
