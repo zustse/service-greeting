@@ -1,4 +1,4 @@
-![master](https://github.com/stse/service-greeting/actions/workflows/gradle.yml/badge.svg?branch=master) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=stse_service-greeting&metric=alert_status)](https://sonarcloud.io/dashboard?id=stse_service-greeting)
+![master](https://github.com/stse/service-greeting/actions/workflows/gradle.yml/badge.svg?branch=master) ![](https://img.shields.io/sonar/quality_gate/stse_service-greeting?label=Quality%20Gate&server=https%3A%2F%2Fsonarcloud.io&sonarVersion=8.7)
 
 # Greeting Service
 A simple Hello World service.
