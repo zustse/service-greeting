@@ -2,19 +2,25 @@ pipeline {
     agent any
     
     options {
-        skipDefaultCheckout(true)
+        
     }
     
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-                checkout scm
+                echo 'Building...'
+                script {
+                    try {
+                        sh './gradlew clean build --no-daemon' //run a gradle task
+                    } finally {
+                        junit '**/build/test-results/test/*.xml' //make the junit test results available in any case (success & failure)
+                    }
+                }
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                echo 'Testing...'
             }
         }
         stage('Deploy') {
