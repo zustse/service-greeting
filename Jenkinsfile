@@ -3,6 +3,9 @@ pipeline {
     
     stages {
         stage('Build') {
+            tools {
+               jdk "corretto-11"
+            }
             steps {
                 echo 'Building...'
                 script {
